@@ -1,0 +1,171 @@
+
+
+{% extends 'facerecognition/dashboard.html'%}
+
+{%block content%}
+{%load static%}
+   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<style>
+    .outer_container{
+        margin:20px;
+        padding:2em;
+        
+    }
+
+
+    .first_container{
+      margin-bottom:  50px;
+    }
+
+
+      body{
+        overflow-y: auto;
+      }
+    *{
+    
+        scroll-behavior: smooth;
+    }
+
+    .card{
+        position: relative;
+        width:26% !important;
+        display: inline-block;
+        margin:10px 30px;
+        min-width: 18%;
+        
+        
+    }
+.card img{
+      
+     height: 22rem !important;;
+     max-height:22em;
+    }
+     
+    @media (max-width: 1100px) {
+      .card {
+        width: 80% !important;;
+        display: block;
+        margin:10px 30px;
+        margin-bottom: 3em!important;
+      }
+      .card img{
+      
+        height: 28rem !important;;
+        max-height:22em;
+        width: 100%;
+       }
+      
+    }
+    
+    .card:hover{
+      transform: scale(1.05);
+      transition:all 0.5s;
+       box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+ }
+
+
+ #second_container{
+ margin-top: 60px;
+ padding: 20px;
+ }
+
+ .card2{
+  width:80%;
+
+  margin-right: auto;
+  margin-left: auto;
+
+ }
+
+ .card2 img{
+  width:100%;
+  height: 60%;
+  
+
+ }
+
+
+
+
+
+
+</style>
+<body>    
+    <div class="outer_container">      
+      <div class="first_container">
+                  <div class="card" >
+                    <img src='{% static "images/card1.jpg"%}' class="card-img-top" alt="..">
+                    <div class="card-body">
+                      <h5 class="card-title">Take Image</h5>
+                      <p class="card-text">To mark your attendance this is the first step to take your images and train for Recognition</p>
+                      <form >
+                       <button onclick='add_photos()'><a href="{% url 'add_photos' %}"  class="btn btn-primary">Take Image</a></button>
+                       </form>                 
+                      </div>
+                  </div>
+
+                  <div class="card" >
+                    <img src='{% static "images/card2.jpg"%}' class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Train Image</h5>
+                      <p class="card-text">This trains the system that a taken images is you</p>
+                      <form >
+                      <button onclick='facetrainning()' ><a href="{% url 'facetraining' %}"  class="btn btn-primary" >Train images</a></button></form>
+                    </div>
+                  </div>
+
+                  <div class="card" >
+                    <img src='{% static "images/card4.jpg"%}' class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Mark Your attendance</h5>
+                      <p class="card-text">After traning the system you can mark your atttendance</p>
+                      <form>
+                         <button onclick="markattendance()"><a href="{% url 'markattendance' %}"  class="btn btn-primary">Mark attendance</a></button>
+                         </form>
+                    </div>
+                  </div>
+                <!-- Cards end -->
+      
+      
+       </div>
+
+              
+      <hr style="margin-top:100px;width:100%;height: 2px;color:var(--black-color);">
+
+      <div id="second_container">
+        <!-- Cards start -->
+        <div class=" card2 ">
+          <img src='{% static "images/card5.gif"%}'  alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Mark Your attendance</h5>
+            <p class="card-text">If you have already trained your image then mark your attendance</p>
+            <form>
+              <button onclick="markattendance()"><a href="{% url 'markattendance' %}"  class="btn btn-primary">Mark attendance</a></button>
+              </form>
+          </div>
+        </div>
+         <!-- Cards end -->
+      </div>
+
+    </div>
+
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
+
+
+
+{%endblock%}

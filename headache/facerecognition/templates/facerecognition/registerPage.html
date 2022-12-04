@@ -1,0 +1,66 @@
+
+{% load static%}
+<html>
+<head>
+    <title>Responsive Login Form Design</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    
+</head>
+<body > 
+    <div class="wrapper">
+        <div class="headline">
+            <h1>Welcome</h1>
+        </div>
+    
+   
+    
+        <form class="form" method="post" action="#">
+            {% csrf_token %}
+            <div class="signup">
+                <div class="form-group">
+                    {{form.username}}
+                </div>
+                <div class="form-group">
+                  {{form.email}}
+                </div>
+                <div class="form-group">
+                   {{form.password1}}
+                </div>
+                <div class="form-group">
+                   {{form.password2}}
+                </div>
+
+                {{form.errors}}
+
+                <button type="submit" class="btn">SIGN UP</button>
+                <div class="account-exist">
+                    Already have an account? <a href="{%url 'loginPage'%}" id="login">Login</a>
+                </div>
+            </div>
+    
+        </form>
+       
+    </div>
+    
+    <script src="{% static 'main.js' %}"></script>
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder='Username';
+        form_fields[2].placeholder='Email';
+        form_fields[3].placeholder='Password';
+        form_fields[4].placeholder='Confirm Password';
+
+        for (var fields in form_fields){
+            form_fields[fields].className += 'form-control'
+        }
+
+    </script>
+
+    </body>
+    
+    </html>
+
+
+

@@ -1,0 +1,80 @@
+ {%load static%}
+<!DOCTYPE html> 
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Face Recognition Attendance system </title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>       
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+   <div class="sidebar">
+     <div class="logo_content">
+       <div class="logo">
+         <div class="logo_name">Face Attendance</div>
+       </div>
+       <i class='bx bx-menu' id="btn"></i>
+     </div>
+     <ul class="nav_list">
+       <li>
+          <i class='bx bx-search'></i>
+          <input type="text" placeholder="Search...">
+          <span class="tooltip">Search</span>
+       </li>
+       <li>
+        <a href="{%url 'home'%}">
+         <i class='bx bx-grid-alt'></i>
+         <span class="links_name">Home</span>
+        </a>
+        <span class="tooltip">Home</span>
+      </li>
+      <li>
+        <a href="#second_container">
+         <i class='bx bx-book'></i>
+         <span class="links_name">Mark Attendance</span>
+        </a>
+        <span class="tooltip">Mark Attendance</span>
+      </li>
+       <li>
+         <a href="{%url 'profile'%}"><i class='bx bx-user'></i><span class="links_name">Profile</span></a>
+         <span class="tooltip">Profile</span>
+       </li>
+       <li>
+        <a href="{%url 'attendancereport'%}"><i class='bx bx-clipboard'></i>
+          <span class="links_name">Attendance report</span></a>
+        <span class="tooltip">Attendance report</span>
+      </li>        
+     </ul>
+     <div class="content">
+       <div class="user">
+         <div class="user_details">
+           <img src='{% static "images/usericon.png" %}' alt="">
+           <div class="name_job">             
+             <div class="job">{{request.user}}</div>
+           </div>
+         </div>         
+         <a href="{% url 'logout' %}" ><i class='bx bx-log-out' id="log_out"></i></a>
+       </div></div>   </div>
+    <div class="home_content"  >
+      
+      <div class="text" style="display:inline-block;position:relative;width:85%;">Face Recognition Attendance</div>
+      <div class="text" style="font-size:18px;display:inline-block;position:relative;width:13%;margin:0;padding:0;">Hello, {{request.user}}</div>
+    </div>
+     
+    <div id="allcontainer1">
+      
+        {%block content%}
+        {%endblock%}
+    </div>
+    
+
+   <script src="{% static 'main.js' %}"></script>
+  
+   <script src="{% static 'dash.js' %}"></script>
+      </body>
+
+</html>
+
+
